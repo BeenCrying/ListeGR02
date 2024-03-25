@@ -23,14 +23,14 @@ public class Liste {
     }
 
     public int getElementAt(int index) {
-        //return tableau[index];
-        int indexCourant = 0;
-        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
-            if (indexCourant == index)
-                return courant.valeur;
-            indexCourant++;
-        }
-        return -1;
+        return getNoeudAt(index).valeur;
+    }
+
+    private Noeud getNoeudAt(int index) {
+        for (Noeud courant = premier; courant != null; courant = courant.prochain)
+            if (index-- == 0)
+                return courant;
+        return null;
     }
 
     public void ajouter(int valeur) {
@@ -40,7 +40,7 @@ public class Liste {
         for (Noeud courant = premier; courant != null; courant = courant.prochain)
             dernier = courant;
 
-        if (premier == null) {
+        if (dernier == null) {
             premier = new Noeud(valeur);
         }
         else {
@@ -48,16 +48,15 @@ public class Liste {
         }
         nbElements++;
     }
-/*
+
     public void ajouter(int valeur, int index) {
-        if (nbElements == tableau.length)
-            resize();
-        for (int i = nbElements; i > index; i--)
-            tableau[i] = tableau[i - 1];
-        tableau[index] = valeur;
+        Noeud precedent = getNoeudAt(index - 1);
+        Noeud nouveau = new Noeud(valeur);
+        precedent.prochain = nouveau;
+        nouveau.prochain = precedent.prochain;
         nbElements++;
     }
-
+/*
     private void resize() {
         int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
         for (int i = 0; i < nbElements; i++)
