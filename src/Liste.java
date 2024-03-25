@@ -52,8 +52,16 @@ public class Liste {
     public void ajouter(int valeur, int index) {
         Noeud precedent = getNoeudAt(index - 1);
         Noeud nouveau = new Noeud(valeur);
-        precedent.prochain = nouveau;
-        nouveau.prochain = precedent.prochain;
+
+        if (index == 0) {
+            nouveau.prochain = premier;
+            premier = nouveau;
+        }
+        else {
+            nouveau.prochain = precedent.prochain;
+            precedent.prochain = nouveau;
+        }
+
         nbElements++;
     }
 /*
