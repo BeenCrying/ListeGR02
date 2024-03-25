@@ -25,7 +25,7 @@ public class Main {
         data.ajouter(11, 8);
         System.out.println(data);
         System.out.println(data.getNbElements());
-/*
+
         System.out.println("Test 4: Ajouter des valeurs provenant d'un autre vecteur");
         Liste v2 = new Liste();
         v2.ajouter(50);
@@ -56,10 +56,10 @@ public class Main {
         test8.ajouter(-1);
         test8.ajouter(4);
         test8.ajouter(70);
-        System.out.println(data.trouverTout(test8));
+        System.out.println(data.trouverTout(test8)); // true
 
         test8.ajouter(9);
-        System.out.println(data.trouverTout(test8));
+        System.out.println(data.trouverTout(test8)); // false
 
         System.out.println("Test 9: Effacer une valeur à une position spécifique");
         System.out.println(data);
@@ -82,6 +82,5 @@ public class Main {
         data.effacerTout();
         System.out.println(data);
         System.out.println(data.getNbElements());
-        */
     }
 }

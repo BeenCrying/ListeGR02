@@ -1,3 +1,5 @@
+import javax.swing.*;
+
 public class Liste {
     private Noeud premier;
     private int nbElements;
@@ -64,13 +66,6 @@ public class Liste {
 
         nbElements++;
     }
-/*
-    private void resize() {
-        int[] nouveau = new int[RATIO_AGRANDISSEMENT * tableau.length];
-        for (int i = 0; i < nbElements; i++)
-            nouveau[i] = tableau[i];
-        tableau = nouveau;
-    }
 
     public void ajouter(Liste autre) {
         for (int i = 0; i < autre.getNbElements(); i++)
@@ -78,9 +73,13 @@ public class Liste {
     }
 
     public int trouver(int valeur) {
-        for (int i = 0; i < nbElements; i++)
-            if (tableau[i] == valeur)
-                return i;
+        int index = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (courant.valeur == valeur)
+                return index;
+            else
+                index++;
+        }
         return -1;
     }
 
@@ -95,8 +94,14 @@ public class Liste {
         if (index < 0 || index > nbElements)
             return false;
 
-        for (int i = index; i < nbElements; i++)
-            tableau[i] = tableau[i + 1];
+        if (index == 0) {
+            premier = premier.prochain;
+        }
+        else {
+            Noeud precedent = getNoeudAt(index - 1);
+            precedent.prochain = precedent.prochain.prochain;
+        }
+
         nbElements--;
         return true;
     }
@@ -115,10 +120,7 @@ public class Liste {
     }
 
     public void effacerTout() {
-        //effacerTout(this);
-        tableau = new int[TAILLE_INITIALE];
+        premier = null;
         nbElements = 0;
     }
-
- */
 }
