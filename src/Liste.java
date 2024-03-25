@@ -1,5 +1,3 @@
-import javax.swing.*;
-
 public class Liste {
     private Noeud premier;
     private int nbElements;
@@ -51,7 +49,11 @@ public class Liste {
         nbElements++;
     }
 
-    public void ajouter(int valeur, int index) {
+    public boolean ajouter(int valeur, int index) {
+        if (index < 0 || index > nbElements)
+            //throw new IndexOutOfBoundsException();
+            return false;
+
         Noeud precedent = getNoeudAt(index - 1);
         Noeud nouveau = new Noeud(valeur);
 
@@ -65,6 +67,7 @@ public class Liste {
         }
 
         nbElements++;
+        return true;
     }
 
     public void ajouter(Liste autre) {
