@@ -2,7 +2,6 @@ public class Liste {
     private Noeud premier;
     private int nbElements;
 
-
     public Liste() {
         premier = null;
         nbElements = 0;
@@ -23,9 +22,16 @@ public class Liste {
         return nbElements == 0;
     }
 
-//    public int getElementAt(int index) {
-//        return tableau[index];
-//    }
+    public int getElementAt(int index) {
+        //return tableau[index];
+        int indexCourant = 0;
+        for (Noeud courant = premier; courant != null; courant = courant.prochain) {
+            if (indexCourant == index)
+                return courant.valeur;
+            indexCourant++;
+        }
+        return -1;
+    }
 
     public void ajouter(int valeur) {
         //tableau[nbElements++] = valeur;
