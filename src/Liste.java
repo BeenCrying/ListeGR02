@@ -4,7 +4,7 @@ public class Liste {
 
     public Liste() {
         premier = null;
-        nbElements = 0;
+        nbElements = 1;
     }
 
     public String toString() {
